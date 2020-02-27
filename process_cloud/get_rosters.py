@@ -19,8 +19,8 @@ def get_rosters(years):
             #for wordcloud.generate_from_frequencies(hinkie_roster)
                 if player.name not in hinkie_roster:
                     hinkie_roster[player.name] = player.games_played
-#            for name, gp in hinkie_roster.items():
-#                f.write("{}: Games Played: {}\n".format(name, gp))
+#        for name, gp in hinkie_roster.items():
+#            f.write("{}: Games Played: {}\n".format(name, gp))
 #    f.close()
         return hinkie_roster
 
