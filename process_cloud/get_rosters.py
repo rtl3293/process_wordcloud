@@ -10,7 +10,7 @@ from sportsreference.nba.roster import Roster
 #2013-2016
 def get_rosters(years):
     #years is a list of years to pull the rosters from
-    with open("hinkie_roster.txt", "w") as f:
+#    with open("hinkie_roster.txt", "w") as f:
         hinkie_roster = {}
         for year in years:
             #Gets roster for a given year
@@ -19,9 +19,9 @@ def get_rosters(years):
             #for wordcloud.generate_from_frequencies(hinkie_roster)
                 if player.name not in hinkie_roster:
                     hinkie_roster[player.name] = player.games_played
-            for name, gp in hinkie_roster.items():
-                f.write("{}: Games Played: {}\n".format(name, gp))
-    f.close()
+#            for name, gp in hinkie_roster.items():
+#                f.write("{}: Games Played: {}\n".format(name, gp))
+#    f.close()
+        return hinkie_roster
 
-
-get_rosters([2013, 2014, 2015, 2016])
+#get_rosters([2013, 2014, 2015, 2016])

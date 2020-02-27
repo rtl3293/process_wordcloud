@@ -7,7 +7,7 @@ import re
 from PIL import Image
 from os import path
 from wordcloud import WordCloud
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from get_rosters import get_rosters
 
 def makeImage():
@@ -18,8 +18,11 @@ def makeImage():
     wc.generate_from_frequencies(dict)
 
     # show
-    plt.imshow(wc, interpolation="bilinear")
-    plt.axis("off")
-    plt.show()
+ #   plt.imshow(wc, interpolation="bilinear")
+ #   plt.axis("off")
+ #   plt.show()
+    image = wc.to_file("pic.png")
+    #image.show()
 
 
+makeImage()
