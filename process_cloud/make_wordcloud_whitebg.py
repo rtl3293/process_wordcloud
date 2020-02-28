@@ -11,9 +11,9 @@ from wordcloud import WordCloud
 from get_rosters import get_rosters
 
 def makeImage():
-    #ricky_mask = np.array(Image.open("alice_mask.png"))
-    dict = get_rosters([2013, 2014, 2015, 2016])
-    wc = WordCloud(background_color="white")
+    ricky_mask = np.array(Image.open("rtrs.jpg"))
+    dict = get_rosters(["13", "14", "15", "16", "17", "18", "19"])
+    wc = WordCloud(mask=ricky_mask, width=1400, height=1400, contour_width=1, contour_color="white")
     # generate word cloud
     wc.generate_from_frequencies(dict)
 
