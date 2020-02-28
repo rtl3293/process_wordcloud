@@ -14,17 +14,22 @@ def get_rosters(years):
     with open("hinkie_roster.txt", "w") as f:
         for year in years:
             #Gets roster for a given year
+            season = "20" + year +"-{}".format(str(int(year) + 1))
             for player in Roster(team="PHI", year="20" + year).players:
             #incrementing through the player info and formatting data
             #for wordcloud.generate_from_frequencies(hinkie_roster)
-                if player.name not in hinkie_roster:
-                    hinkie_roster[player.name] = player.dataframe.loc["20" + year +"-{}".format(str(int(year) + 1))].games_played
-                else:
-                    hinkie_roster[player.name] += player.dataframe.loc["20" + year +"-{}".format(str(int(year) + 1))].games_played
+                try:
+                    games_played = player.dataframe.loc[season].games_played[0]
+                    if player.name not in hinkie_roster and games_played > 0:
+                        hinkie_roster[player.name] = games_played
+                    elif games_played > 0:
+                        hinkie_roster[player.name] += games_played
+                except KeyError:
+                    continue
         for name, gp in hinkie_roster.items():
-                f.write("{}: Games Played: ".format(name, gp))
+                f.write("{}: Games Played: {}\n".format(name, gp))
     f.close()
     return hinkie_roster
 
-get_rosters(["13", "14"])
+#get_rosters()
 #, 2015, 2016]
